@@ -1,0 +1,17 @@
+.data
+mensagem: .string "Ola Mundo\n"
+
+.text
+
+    # Carrega o endereço da string na registrador a0
+    li a0, 1
+    la a1, mensagem
+    # Chama a syscall para imprimir a string
+    li a2, 10	#Define o tamanho da mensagem
+    li a7, 64	# Carrega o código da syscall (imprimir string)
+    ecall	# Chama a syscall
+
+    # Encerra o programa
+    li a0, 0
+    li a7, 93        # Carrega o código da syscall de saída
+    ecall            # Chama a syscall de saída

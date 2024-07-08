@@ -1,0 +1,209 @@
+.data
+ADD: .string "ADD: "
+SUB: .string "SUB: "
+AND: .string "AND: "
+OR: .string "OR: "
+XOR: .string "XOR: "
+MASK: .string "MASK: "
+SLL: .string "SLL("
+SRL: .string "SRL("
+end: .string "): "
+msg: .string "\n"
+.text
+main:
+#Leitura do primeiro Numero
+li a7, 5 #ReadInt
+ecall
+mv t0, a0
+
+#Leitura do segundo Numero
+li a7, 5
+ecall
+mv t1, a0
+
+#Leitura do terceiro Numero
+li a7, 5
+ecall
+mv t2, a0
+
+#Imprime o ADD:
+li a0, 1
+la a1, ADD
+li a2, 5
+li a7, 64
+ecall
+
+#SOMA
+add a0, t0, t1
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Iprime a SUBTRAÇÂO:
+li a0, 1
+la a1, SUB
+li a2, 5
+li a7, 64
+ecall
+
+#SUBTRAÇÂO
+sub a0, t0, t1
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime AND:
+li a0, 1
+la a1, AND
+li a2, 5
+li a7, 64
+ecall
+
+#AND
+and a0, t0, t1
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime OR:
+li a0, 1
+la a1, OR
+li a2, 4
+li a7, 64
+ecall
+
+#OR
+or a0, t0, t1
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime XOR:
+li a0, 1
+la a1, XOR
+li a2, 5
+li a7, 64
+ecall
+
+#XOR
+xor a0, t0, t1
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime a MÁSCARA:
+li a0, 1
+la a1, MASK
+li a2, 6
+li a7, 64
+ecall
+
+#MASK
+andi a0, t2, 31
+li a7, 1
+ecall
+mv t3, a0
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime o DESLOCAMENTO PARA ESQUERDA:
+li a0, 1
+la a1, SLL
+li a2, 4
+li a7, 64
+ecall
+
+#MASK
+andi a0, t2, 31
+li a7, 1
+ecall
+mv t3, a0
+
+#Imprime o FINAL DO DESLOCAMENTO:
+li a0, 1
+la a1, end
+li a2, 3
+li a7, 64
+ecall
+
+#SLL
+sll a0, t0, t3
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+#Imprime o DESLOCAMENTO PARA DIREITA:
+li a0, 1
+la a1, SRL
+li a2, 4
+li a7, 64
+ecall
+
+#MASK
+andi a0, t2, 31
+li a7, 1
+ecall
+mv t3, a0
+
+#Imprime o FINAL DO DESLOCAMENTO:
+li a0, 1
+la a1, end
+li a2, 3
+li a7, 64
+ecall
+
+#SRL
+srl a0, t1, t3
+li a7, 1
+ecall
+
+#Imprime o \n
+li a0, 1
+la a1, msg
+li a2, 1
+li a7, 64
+ecall
+
+li a7, 10
+ecall
